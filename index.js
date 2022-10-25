@@ -22,8 +22,12 @@ app.use(express.static('public'));
 
 
 //The word video === public/index.html name="video"
-app.post('/upload', upload.single('video'), (req, res) => {
-  return res.json({status: 'Ok'})
+app.post('/upload', upload.array('video'), (req, res) => {
+  return res.json({status: 'Ok'
+  // , uploaded: req.files.length //Comment out to upload multiple files
 })
+})
+
+// If we want to add multiple files change upload.single for upload.array and check note in index.html
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
