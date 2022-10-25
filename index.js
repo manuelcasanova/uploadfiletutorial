@@ -9,7 +9,8 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const {originalname } = file;
-    cb(null, originalname);
+    cb(null, originalname); //save just with the name of the file
+    //cb(null, `${uuid()}-${originalname}`); //save unique id + file name
   }
 })
 
